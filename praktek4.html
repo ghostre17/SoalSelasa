@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify-Like Music Player</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .music-player {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            width: 300px;
+            margin: 20px auto;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .album-cover img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .song-info h2 {
+            font-size: 1.5rem;
+            margin: 10px 0;
+        }
+
+        audio {
+            width: 100%;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #1db954;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 50px;
+            outline: none;
+            margin: 0 10px;
+        }
+
+        button:hover {
+            background-color: #15a843;
+        }
+    </style>
+</head>
+<body>
+    <div class="music-player">
+        <div class="album-cover">
+            <img src="../img/supido.jpg" alt="Album Cover">
+        </div>
+        <div class="song-info">
+            <h2>supїdo</h2>
+            <p>фрози (Frozy)</p>
+        </div>
+        <audio id="music-player" controls>
+            <source src="../sound/supidoasli.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <div class="controls">
+            <button id="play">Play</button>
+            <button id="pause">Pause</button>
+            <button id="stop">Stop</button>
+        </div>
+    </div>
+    <script>
+        const musicPlayer = document.getElementById("music-player");
+        const playButton = document.getElementById("play");
+        const pauseButton = document.getElementById("pause");
+        const stopButton = document.getElementById("stop");
+        const replayButton = document.getElementById("replay");
+        const loopButton = document.getElementById("loop");
+
+        playButton.addEventListener("click", function () {
+            musicPlayer.play();
+        });
+
+        pauseButton.addEventListener("click", function () {
+            musicPlayer.pause();
+        });
+
+        stopButton.addEventListener("click", function () {
+            musicPlayer.pause();
+            musicPlayer.currentTime = 0;
+        });
+
+        replayButton.addEventListener("click", function () {
+            musicPlayer.currentTime = 0;
+            musicPlayer.play();
+        });
+
+        loopButton.addEventListener("click", function () {
+            if (musicPlayer.loop) {
+                musicPlayer.loop = false;
+            } else {
+                musicPlayer.loop = true;
+            }
+        });
+    </script>
+</body>
+</html>
